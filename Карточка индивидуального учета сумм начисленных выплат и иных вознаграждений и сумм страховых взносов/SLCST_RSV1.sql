@@ -1,0 +1,35 @@
+-- Create table
+create global temporary table SLCST_RSV1
+(
+  DUMMY        VARCHAR2(1),
+  MONTHNUMB    NUMBER(2) not null,
+  BIRTH_MORE66 NUMBER(1) default 0 not null,
+  COMP         NUMBER(17,2) default 0,
+  COMP_INV     NUMBER(17,2) default 0,
+  COMP_ENVD    NUMBER(17,2) default 0,
+  DEDUCT       NUMBER(17,2) default 0,
+  DEDUCT_INV   NUMBER(17,2) default 0,
+  DEDUCT_ENVD  NUMBER(17,2) default 0,
+  SUD          NUMBER(17,2) default 0,
+  SUD_INV      NUMBER(17,2) default 0,
+  MAXIMUM      NUMBER(17,2) default 0,
+  MAXIMUM_INV  NUMBER(17,2) default 0,
+  MAXIMUM_ENVD NUMBER(17,2) default 0,
+  NPFR         NUMBER(17,2) default 0,
+  NPFR_INV     NUMBER(17,2) default 0,
+  NPFR_ENVD    NUMBER(17,2) default 0,
+  SPFR         NUMBER(17,2) default 0,
+  SPFR_INV     NUMBER(17,2) default 0,
+  SPFR_ENVD    NUMBER(17,2) default 0,
+  FFOMS        NUMBER(17,2) default 0,
+  FFOMS_INV    NUMBER(17,2) default 0,
+  FFOMS_ENVD   NUMBER(17,2) default 0,
+  TFOMS        NUMBER(17,2) default 0,
+  TFOMS_INV    NUMBER(17,2) default 0,
+  TFOMS_ENVD   NUMBER(17,2) default 0,
+  AUTHOR       NUMBER(17,2) default 0,
+  AUTHOR_INV   NUMBER(17,2) default 0,
+  AUTHOR_ENVD  NUMBER(17,2) default 0,
+  FSS          NUMBER(1) default 0
+)
+on commit preserve rows;

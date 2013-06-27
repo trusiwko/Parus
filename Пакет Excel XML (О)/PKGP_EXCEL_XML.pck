@@ -1,3 +1,56 @@
+create or replace package PKGP_EXCEL_XML is
+
+  -- Author  : GONCHARENKOPL
+  -- Created : 08.02.2012 12:17:06
+
+  f              utl_file.file_type;
+  bWorkSheetOpen boolean := false;
+  styleID        number;
+
+  sCOLONTITULNEWLINE varchar2(10) := '&#10;';
+  sCOLONTITULPAGENUM varchar2(10) := '&amp;С';
+
+  procedure Init(sFileName in varchar2);
+  procedure AddWorkSheet(sSheet in varchar2);
+  procedure CloseWorkSheet;
+  procedure AddTable;
+  procedure AddColumn(sWidth in varchar2);
+  procedure CloseTable;
+  procedure AddNamedRange(sName in varchar2, sValue in varchar2);
+  procedure AddLine(sParams in varchar2 default null);
+  procedure CloseLine;
+  procedure AddStyles;
+  procedure CloseStyles;
+  procedure AddStyleBorder(sName in varchar2);
+  procedure AddStyleBor(sName in varchar2, sBORDER in varchar2);
+  procedure AddStyle_Font_Bold(sName in varchar2);
+  procedure AddStyle_Font_Size(sName in varchar2, sValue in varchar2);
+  procedure AddStyle_Alignment_Horizontal(sName in varchar, sValue in varchar2);
+  procedure AddStyle_Alignment_Vertical(sName in varchar, sValue in varchar2);
+  procedure AddStyle_Alignment_Wrap(sName in varchar);
+  procedure AddEmptyCell(nCount in number default 1);
+  procedure AddCell(sData in varchar2, sStyle in varchar2 default null, sParams in varchar2 default null);
+  procedure AddCell(nData in number, sStyle in varchar2 default null, sParams in varchar2 default null);
+  procedure AddNamedCell(sData in varchar2, sNamed in varchar2, sStyle in varchar2 default null, sParams in varchar2 default null);
+  procedure AddWorksheetOptions;
+  procedure AddPageSetup;
+  procedure AddLayout(sOrienantion in varchar2);
+  procedure PageHeader(nMargin in number, sText in varchar2 default null);
+  procedure PageFooter(nFooter in number);
+  procedure PageMargins(nBottom in number, nLeft in number, nRight in number, nTop in number);
+  procedure ClosePageSetup;
+  procedure SetFitToPage;
+  procedure AddPrint;
+  procedure AddPrintFitHeight(nHeight in number);
+  procedure ClosePrint;
+  procedure CloseWorksheetOptions;
+  procedure Fini;
+  -----------------------------------------------
+  procedure test;
+
+end PKGP_EXCEL_XML;
+/
+
 create or replace package body PKGP_EXCEL_XML is
 
   procedure Init(sFileName in varchar2) is
